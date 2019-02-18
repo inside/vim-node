@@ -25,7 +25,7 @@ function! node#lib#find(name, from)
 
 	" Hack specific to me for getting gf to work on imports having $src to
 	" point to the project's root
-	let l:alias = substitute(a:name, "^\$src/", expand("~/src/rav/src/"), "g")
+	let l:alias = substitute(a:name, "^\$src/", getcwd() . "/src/", "g")
 	let l:path = s:resolve(s:absolutize(alias, a:from))
 	if !empty(path) | return fnamemodify(resolve(path), ":.") | endif
 endfunction
